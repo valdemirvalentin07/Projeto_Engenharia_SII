@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor Usuario
+
+package "Sistema de Tarefas" {
+  
+  usecase "Acessar Aplicativo" as UC_Login
+  usecase "Adicionar Tarefa" as UC_Add
+  usecase "Listar Tarefas" as UC_List
+  usecase "Editar Tarefa" as UC_Edit
+  usecase "Excluir Tarefa" as UC_Delete
+  usecase "Concluir Tarefa" as UC_Complete
+  usecase "Categorizar Tarefa" as UC_Category
+
+  Usuario --> UC_Login
+  Usuario --> UC_Add
+  Usuario --> UC_List
+  Usuario --> UC_Edit
+  Usuario --> UC_Delete
+  Usuario --> UC_Complete
+  Usuario --> UC_Category
+
+  UC_Add --> UC_Category : "Selecionar ou criar categoria"
+  UC_Edit --> UC_Category : "Alterar categoria"
+  UC_List --> UC_Category : "Filtrar por categoria"
+}
+
+@enduml
