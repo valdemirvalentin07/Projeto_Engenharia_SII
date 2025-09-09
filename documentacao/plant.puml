@@ -22,9 +22,14 @@ package "Sistema de Tarefas" {
   Usuario --> UC_Complete
   Usuario --> UC_Category
 
-  UC_Add --> UC_Category : "Selecionar ou criar categoria"
-  UC_Edit --> UC_Category : "Alterar categoria"
-  UC_List --> UC_Category : "Filtrar por categoria"
+  ' Inclui obrigatoriamente a categorização ao adicionar
+  UC_Add --> UC_Category : <<include>>
+
+  '  Editar seja opcional '
+  UC_Edit --> UC_Category : <<extend>>
+
+  ' Se Listar permitir filtro opcional, também pode ser extend
+  UC_List --> UC_Category : <<extend>>
 }
 
 @enduml
