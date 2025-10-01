@@ -1,0 +1,55 @@
+nav{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(115, 71, 156);
+    color: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  color: white !important; /* cor normal do link */
+}
+
+
+h2{
+    text-align: center;
+    
+}
+
+header {
+    padding: 5px;
+    background-color:rgb(134, 85, 180);
+    font-size: 35px;
+   color: white;
+   
+}
+
+
+
+
+
+#searchInput {
+  width: 100%;
+  max-width: 400px;  /* não fica muito grande */
+  padding: 5px;
+  margin: 0 auto;    /* centraliza */
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  box-sizing: border-box; 
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+
+footer{
+     background-color: rgb(115, 71, 156);
+    padding: 50px;
+    text-align: center;
+    color: white;
+     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
