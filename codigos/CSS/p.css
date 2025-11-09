@@ -1,0 +1,96 @@
+/* ---------------------------------------------------- */
+/* REAPROVEITAMENTO E DEFINIÇÃO DE CORES PERSONALIZADAS */
+/* ---------------------------------------------------- */
+
+/* Cor principal da navegação e rodapé (rgb(115, 71, 156)) */
+.bg-violet {
+    background-color: rgb(115, 71, 156) !important;
+}
+
+/* Aplicação da Sombra no Header e Footer */
+.bg-violet {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Configuração da Navbar (reaproveitando font-family) */
+nav {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Links da Navbar: Mantendo a cor branca do usuário */
+.nav-link {
+    color: white !important; /* Cor normal do link */
+    transition: color 0.3s ease; /* Transição suave para hover */
+}
+
+.nav-link:hover {
+    color: rgba(255, 255, 255, 0.8) !important; /* Efeito hover sutil */
+}
+
+/* Header/Área de Destaque do Título (rgb(134, 85, 180)) */
+header {
+    background-color: rgb(134, 85, 180); /* Cor original do header */
+    color: white;
+    padding: 1.5rem 0; /* Aumenta o padding para dar mais respiro */
+    margin-bottom: 2rem; /* Separa do conteúdo principal */
+    font-size: 35px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h2 {
+    text-align: center;
+    margin: 0;
+    font-style: italic; /* Mantido se você usa <i> no HTML */
+}
+
+/* ---------------------------------------------------- */
+/* MELHORIAS VISUAIS PARA OS COMPONENTES BOOTSTRAP */
+/* ---------------------------------------------------- */
+
+/* Campo de Busca: Adaptado e Aprimorado */
+#searchInput {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.375rem 0.75rem; /* Padrão de padding do Bootstrap */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 1rem;
+    box-sizing: border-box; 
+    transition: all 0.3s;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: #5d3596; /* Cor violeta para o foco */
+    box-shadow: 0 0 5px rgba(93, 53, 150, 0.5);
+}
+
+/* Cards de Resumo: Efeito profissional (melhor que cards simples) */
+.card {
+    border: none; /* Remove a borda padrão do card */
+    border-radius: 0.75rem; /* Bordas levemente arredondadas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efeito de elevação ao passar o mouse */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important; /* Sombra mais destacada */
+}
+
+/* Tabela de Tarefas: Estética mais limpa e organizada */
+.table-responsive {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid #dee2e6; /* Borda sutil para a área da tabela */
+}
+
+/* Rodapé */
+footer {
+    background-color: rgb(115, 71, 156); /* Mantém a cor original */
+    padding: 2rem; /* Ajuste para o padding padrão de rodapés */
+    text-align: center;
+    color: white;
+}
+footer p {
+    margin: 0;
+}
