@@ -44,14 +44,12 @@ foreach ($tarefas as $t) {
   --light-bg: #f9f9fb;
 }
 
-/* ===== Body ===== */
 body {
   background: var(--light-bg);
   font-family: 'Poppins', sans-serif;
-  padding-top: 120px; /* compensa navbar maior */
+  padding-top: 120px;
 }
 
-/* ===== Navbar ===== */
 .navbar {
   background: linear-gradient(135deg, #7e57c2, #5e35b1, #4527a0);
   backdrop-filter: blur(8px);
@@ -74,7 +72,6 @@ body {
   transform: scale(1.05);
 }
 
-/* ===== Cards Modernos ===== */
 .card-stat-modern {
   border-radius: 1rem;
   color: #fff;
@@ -107,7 +104,6 @@ body {
   background: linear-gradient(135deg, #5e35b1, #311b92);
 }
 
-/* ===== Tabela ===== */
 .table {
   border-radius: 1rem;
   overflow: hidden;
@@ -121,7 +117,6 @@ body {
   background-color: #f1e8ff;
 }
 
-/* ===== Modal ===== */
 .modal-content {
   border-radius: 1rem;
   border: none;
@@ -138,7 +133,6 @@ body {
   background-color: var(--violet-dark);
 }
 
-/* ===== Footer ===== */
 footer {
   background: linear-gradient(135deg, #4527a0, #311b92);
   color: white;
@@ -153,7 +147,6 @@ footer p {
 </head>
 <body>
 
-<!-- ===== Navbar ===== -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-4">
   <div class="container">
     <img src="imagens/logo.png" alt="logo" height="50" class="me-2">
@@ -182,7 +175,6 @@ footer p {
   </div>
 </nav>
 
-<!-- ===== Cards de Resumo ===== -->
 <div class="container">
   <h2 class="fw-bold mb-4 text-dark"><i class="bi bi-bar-chart-fill me-2"></i>Resumo</h2>
   <div class="row g-4 mb-5">
@@ -216,7 +208,6 @@ footer p {
     </div>
   </div>
 
-  <!-- ===== Tabela de Tarefas ===== -->
   <section id="tarefas" class="bg-white shadow p-4 rounded-4">
     <h3 class="fw-bold mb-3"><i class="bi bi-list-task me-2"></i>Suas Tarefas</h3>
     <div class="table-responsive">
@@ -244,6 +235,61 @@ footer p {
               <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $t['id']; ?>"><i class="bi bi-trash"></i></button>
             </td>
           </tr>
+
+          <!-- Modal Editar -->
+          <div class="modal fade" id="editModal<?= $t['id']; ?>" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header">
+                  <h5 class="modal-title"><i class="bi bi-pencil"></i> Editar Tarefa</h5>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <form method="POST" action="../CRUD/editar_tarefa.php">
+                  <div class="modal-body">
+                    <input type="hidden" name="id" value="<?= $t['id']; ?>">
+                    <div class="mb-3">
+                      <label class="form-label">Título</label>
+                      <input type="text" name="titulo" class="form-control" value="<?= htmlspecialchars($t['titulo']); ?>" required>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Prioridade</label>
+                      <select name="prioridade" class="form-select">
+                        <option value="Baixa" <?= $t['cor']==='cinza'?'selected':''; ?>>Baixa</option>
+                        <option value="Média" <?= $t['cor']==='azul'?'selected':''; ?>>Média</option>
+                        <option value="Alta" <?= $t['cor']==='vermelho'?'selected':''; ?>>Alta</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Prazo</label>
+                      <input type="date" name="prazo" class="form-control" value="<?= date('Y-m-d', strtotime($t['data'])); ?>" required>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Excluir -->
+          <div class="modal fade" id="deleteModal<?= $t['id']; ?>" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-danger text-white">
+                  <h5 class="modal-title"><i class="bi bi-trash"></i> Excluir</h5>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <p>Deseja excluir "<strong><?= htmlspecialchars($t['titulo']); ?></strong>"?</p>
+                  <a href="../CRUD/excluir_tarefa.php?id=<?= $t['id']; ?>" class="btn btn-danger">Sim</a>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         <?php endforeach; endif; ?>
         </tbody>
       </table>
@@ -251,7 +297,7 @@ footer p {
   </section>
 </div>
 
-<!-- ===== Modal Adicionar Tarefa ===== -->
+<!-- Modal Adicionar -->
 <div class="modal fade" id="addTarefa" tabindex="-1" aria-labelledby="addTarefaLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content border-0 shadow-lg">
@@ -265,7 +311,6 @@ footer p {
             <label class="form-label">Título</label>
             <input type="text" class="form-control" name="titulo" placeholder="Ex: Revisar relatório" required>
           </div>
-
           <div class="mb-3">
             <label class="form-label">Prioridade</label>
             <select name="prioridade" class="form-select">
@@ -274,12 +319,10 @@ footer p {
               <option value="Alta">Alta</option>
             </select>
           </div>
-
           <div class="mb-4">
             <label class="form-label">Prazo</label>
             <input type="date" name="prazo" class="form-control" required>
           </div>
-
           <button type="submit" class="btn btn-primary w-100">
             <i class="bi bi-save"></i> Salvar Tarefa
           </button>
